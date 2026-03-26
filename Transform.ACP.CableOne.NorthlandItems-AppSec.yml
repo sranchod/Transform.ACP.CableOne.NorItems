@@ -1,0 +1,31 @@
+# Security Scans
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: ESM/BuildTemplates
+      ref: refs/heads/main
+
+trigger:
+- master
+
+
+
+#schedules:
+#  - cron: "0 23 * * Sat"      # mm HH DD MM DW Builds every sat at 11.00 pm
+#    displayName: Weekly Builds
+#    branches:
+#      include:
+#       - main
+#    always: true
+
+
+extends:
+  template: Secopscan/iac-scan.yml@templates
+  parameters:
+    checkmarx_team: DMS-Conversions #What is your team name in Checkmarx SAST/SCA
+    AgentPool: Appsec-Linux #AgentPool to run SCA if need custom integration. Install SCA binary to consistent location, use AppSec script for howto. 
+    SASTFileExclusion: "Foo*, *Bar"
+    SCAFileExclusion: '*Foo.ext, Bar*'
+    # Put Single quote around SCA, double around SAST to pass parameter .. THESE ARE FOLDER EXCLUSIONS EVEN THOUGH IT SAYS FILE IN PARAMETER NAME

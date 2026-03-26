@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NorthlandItemTransform": {
+      "commandName": "Project",
+      "commandLineArgs": "\"U:\\AutoSys\\CableOne-FID\\Configuration\\ItemTransformConfig.json\""
+    }
+  }
+}
